@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="display-6"><i class="fas fa-user-plus"></i> {{formValue.get('id')?.value ?'Edição' : 'Cadastro' }} de Cliente</h1>
+      <hr>
+      <form [formGroup]="formValue" (ngSubmit)="enviar()">
+        <div class="mb-3">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="nome">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">E-mail</label>
+          <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="email">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">CPF</label>
+          <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="cpf">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Observações</label>
+          <textarea class="form-control" cols="30" rows="3" formControlName="observacoes"></textarea>
+        </div>
+        <div class="mb-3 form-check">
+          <input formControlName= "ativo" type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Conta ativa</label>
+        </div>
+        <div *ngIf="formValue.get('id')?.value" class="mb-3">
+          <label class="form-label mx-1">Ativo</label>
+          <input type="checkbox" formControlName="ativo">
+        </div>
+        <a routerLink='/clientes' class="btn btn-dark">Voltar</a>
+        <button [disabled]="!formValue.valid" type="submit" class="btn btn-primary ">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
